@@ -4,8 +4,8 @@
   "description": "Updating an old php script to use a modern code stack. Using ExpressJS to create a simple API to write to a text file.",
   "main": "index.js",
   "scripts": {
-    "start": "node src/index.js",
-    "dev": "nodemon src/index.js",
+    "start": "PORT=3000 node src/index.js",
+    "dev": "PORT=3000 nodemon src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -23,6 +23,8 @@
     "express": "^4.17.1"
   },
   "devDependencies": {
+    "eslint": "^7.0.0",
+    "eslint-config-airbnb": "^18.1.0",
     "nodemon": "^2.0.3"
   }
 }
