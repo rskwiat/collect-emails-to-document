@@ -13,7 +13,7 @@ describe('Test the root path', () => {
 });
 
 describe('The api/email path', () => {
-  test('It should be return a 422 error when nothing is passed', done => {
+  test('It should be return a 422 error when nothing is passed to the post', done => {
     request(app)
       .post('/api/email')
       .then(response => {
