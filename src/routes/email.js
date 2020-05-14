@@ -1,16 +1,13 @@
 const express = require('express');
 const router = express.Router();
-const fs = require('fs')
+const fs = require('fs');
+const validation = require('../utils/validation');
 
 router.post('/email', (req, res) => {
   const { email } = req.body;
+  const valid = validation(email);
 
-  //@todo - move to seperate function
-  var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-
-  const test = re.test(String(email).toLowerCase());
-
-  if (!test) {
+  if (!valid) {
     return res.status(422).send({ error: 'You must provide a valid email address' });
   }
 
