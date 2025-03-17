@@ -1,32 +1,27 @@
 {
   "name": "collect-emails-to-document",
-  "version": "2.0.0",
-  "description": "Updating an old php script to use a modern code stack. Using ExpressJS to create a simple API to write to a text file.",
-  "main": "index.js",
+  "module": "index.ts",
+  "type": "module",
+  "private": true,
   "scripts": {
-    "start": "PORT=3000 node src/index.js",
-    "dev": "PORT=3000 nodemon src/index.js",
-    "test": "jest"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/rskwiat/collect-emails-to-document.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/rskwiat/collect-emails-to-document/issues"
-  },
-  "homepage": "https://github.com/rskwiat/collect-emails-to-document#readme",
-  "dependencies": {
-    "body-parser": "^1.19.0",
-    "express": "^4.17.1"
+    "dev": "bun run --hot index.ts",
+    "lint": "biome lint .",
+    "format": "biome format --write ."
   },
   "devDependencies": {
-    "eslint": "^7.0.0",
-    "eslint-config-airbnb": "^18.1.0",
-    "jest": "^26.0.1",
-    "nodemon": "^2.0.3",
-    "supertest": "^4.0.2"
+    "@biomejs/biome": "^1.9.4",
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "hono": "^4.7.4",
+    "hono-pino": "^0.8.0",
+    "mongodb": "^6.14.2",
+    "mongoose": "^8.12.1",
+    "pino": "^9.6.0",
+    "pino-pretty": "^13.0.0",
+    "zod": "^3.24.2"
   }
 }
