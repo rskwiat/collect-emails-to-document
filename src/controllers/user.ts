@@ -105,7 +105,39 @@ export async function getUserById(c: Context) {
       {
         message: 'An error occurred while retrieving the user.',
       },
-      HttpStatusCodes.INTERNAL_SERVER_ERROR, // 500 status code
+      HttpStatusCodes.INTERNAL_SERVER_ERROR,
+    );
+  }
+}
+
+export async function deleteUserById(c: Context) {
+  try {
+    const { id } = await c.req.param();
+
+    const user = await userModel.findByIdAndDelete({ _id: id });
+
+    if (!user) {
+      return c.json(
+        {
+          message: 'User not found. Deletion failed.',
+        },
+        HttpStatusCodes.NOT_FOUND,
+      );
+    }
+
+    return c.json(
+      {
+        message: 'User deleted successfully',
+        data: user,
+      },
+      HttpStatusCodes.OK,
+    );
+  } catch (error) {
+    return c.json(
+      {
+        message: 'An error occured while deeleting a user.',
+      },
+      HttpStatusCodes.INTERNAL_SERVER_ERROR,
     );
   }
 }

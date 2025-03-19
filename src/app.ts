@@ -1,8 +1,12 @@
 import { connect } from 'mongoose';
-import { userModel, userZodSchema } from './models/UserSchema';
 
 import { healthcheck } from './controllers/heathcheck';
-import { getAllUsers, saveUser, getUserById } from './controllers/user';
+import {
+  getAllUsers,
+  saveUser,
+  getUserById,
+  deleteUserById,
+} from './controllers/user';
 
 import createApp from './lib/create-app';
 
@@ -14,6 +18,6 @@ app.get('/healthcheck', healthcheck);
 app.get('/users', getAllUsers);
 app.post('/user', saveUser);
 app.get('/user/:id', getUserById);
-app.delete('/', async (c) => {});
+app.delete('/user/:id', deleteUserById);
 
 export default app;
