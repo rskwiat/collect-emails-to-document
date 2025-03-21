@@ -1,7 +1,8 @@
+import { afterEach, beforeEach, describe, expect, it } from 'bun:test';
 import mongoose, { connect, disconnect, connection } from 'mongoose';
+
 import { createTestApp } from '../../lib/create-app';
 import { getAllUsers } from '../user';
-import { afterEach, beforeEach, describe, expect, it } from 'bun:test';
 
 describe('/users', () => {
   beforeEach(async () => {

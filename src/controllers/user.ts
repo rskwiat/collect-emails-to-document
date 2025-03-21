@@ -1,7 +1,7 @@
 import type { Context } from 'hono';
+import * as HttpStatusCodes from '../constants/status-codes';
 import { userModel } from '../models/UserSchema';
 import { userZodSchema } from '../models/UserSchema';
-import * as HttpStatusCodes from '../constants/status-codes';
 
 export async function saveUser(c: Context) {
   try {

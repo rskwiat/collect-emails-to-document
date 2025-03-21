@@ -2,10 +2,10 @@ import { connect } from 'mongoose';
 
 import { healthcheck } from './controllers/heathcheck';
 import {
-  getAllUsers,
-  saveUser,
-  getUserById,
   deleteUserById,
+  getAllUsers,
+  getUserById,
+  saveUser,
 } from './controllers/user';
 
 import createApp from './lib/create-app';

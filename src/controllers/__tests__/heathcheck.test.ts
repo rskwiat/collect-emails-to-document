@@ -1,6 +1,6 @@
+import { describe, expect, it } from 'bun:test';
 import { createTestApp } from '../../lib/create-app';
 import { healthcheck } from '../heathcheck';
-import { describe, expect, it } from 'bun:test';
 
 describe('/heathcheck', () => {
   it('should render', async () => {
