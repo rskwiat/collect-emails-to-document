@@ -2,13 +2,11 @@ import type { Context } from 'hono';
 import { userModel } from '../models/UserSchema';
 import { userZodSchema } from '../models/UserSchema';
 import * as HttpStatusCodes from '../constants/status-codes';
-import * as HttpStatusMessages from '../constants/status-messages';
 
 export async function saveUser(c: Context) {
   try {
     const { email, name, optIn } = await c.req.json();
 
-    // // Validate the input using Zod
     const validation = userZodSchema.safeParse({ email, name });
 
     if (!validation.success) {
@@ -19,14 +17,13 @@ export async function saveUser(c: Context) {
 
       return c.json(
         {
-          message: 'Validation failed',
+          message: 'Validation failed.',
           errors,
         },
         HttpStatusCodes.UNPROCESSABLE_ENTITY,
       );
     }
 
-    //find the same user by email address
     const currentEmail = await userModel.findOne({
       email: validation.data.email,
     });
@@ -34,7 +31,7 @@ export async function saveUser(c: Context) {
     if (currentEmail) {
       return c.json(
         {
-          message: 'User already exists',
+          message: 'User already exists.',
         },
         HttpStatusCodes.OK,
       );
@@ -50,10 +47,9 @@ export async function saveUser(c: Context) {
     // Save the user to the database
     await user.save();
 
-    // Return success response
     return c.json(
       {
-        message: 'User saved successfully',
+        message: 'User saved successfully.',
       },
       HttpStatusCodes.OK,
     );
@@ -127,7 +123,7 @@ export async function deleteUserById(c: Context) {
 
     return c.json(
       {
-        message: 'User deleted successfully',
+        message: 'User deleted successfully.',
         data: user,
       },
       HttpStatusCodes.OK,
@@ -135,7 +131,7 @@ export async function deleteUserById(c: Context) {
   } catch (error) {
     return c.json(
       {
-        message: 'An error occured while deeleting a user.',
+        message: 'An error occured while deleting the user.',
       },
       HttpStatusCodes.INTERNAL_SERVER_ERROR,
     );

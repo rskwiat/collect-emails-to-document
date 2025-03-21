@@ -14,7 +14,7 @@ const emailZodSchema = z
   .transform((email) => email.toLowerCase());
 
 const nameZodSchema = z.string().trim().min(3, {
-  message: 'Must be 3 or more characters long',
+  message: 'Name must be greater than 3 characters.',
 });
 
 const userZodSchema = z.object({
@@ -27,7 +27,7 @@ const userSchema = new Schema<User>({
     type: String,
     validate: {
       validator: (value: string) => nameZodSchema.safeParse(value).success,
-      message: 'Must be greater than 3 characters',
+      message: 'Name must be greater than 3 characters.',
     },
   },
   email: {
@@ -36,7 +36,7 @@ const userSchema = new Schema<User>({
     lowercase: true,
     validate: {
       validator: (value: string) => emailZodSchema.safeParse(value).success,
-      message: 'Invalid Email',
+      message: 'Invalid Email.',
     },
   },
   optIn: {

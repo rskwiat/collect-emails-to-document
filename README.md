@@ -1,6 +1,7 @@
 # Collect Emails to Document
 
-[![CircleCI](https://circleci.com/gh/rskwiat/collect-emails-to-document/tree/develop.svg?style=svg)](https://circleci.com/gh/rskwiat/collect-emails-to-document/tree/develop)
+Bun + Hono version 
+
 
 NodeJS version of a simple script that writes a user email to a text document found on your local server.
 
@@ -8,16 +9,27 @@ NodeJS version of a simple script that writes a user email to a text document fo
 
 In the project directory, you can run:
 
-### `npm dev`
+### `bun dev`
 
 Runs the app in the development mode.<br />
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-### `npm start`
+### `bun lint`
 
-Runs the app in the production ready mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Runs the linting on the files based on the `biome.json` config.
 
-### `npm test`
 
-Runs the tests found in the `__tests__` folder.
+### `bun format`
+
+Formats the files based on the `biome.json` config.
+
+## Endpoints
+
+|              |                  |                                 |
+| ------------ | ---------------- | ------------------------------- |
+| Request Type | Path             | Description                     |
+| GET          | /healthcheck  | Check if the app is running          |
+| GET          | /users       | Lists all the users saved to the mongodb database       |
+| GET          | /user/{id}      | Get a single user based on their ID          |
+| POST         | /user      | Save's the user and optin information to the db            |
+| DELETE          | /user/{id} | Deletes a user based on their ID        |
