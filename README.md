@@ -1,9 +1,6 @@
 # Collect Emails to Document
 
-Bun + Hono version 
-
-
-NodeJS version of a simple script that writes a user email to a text document found on your local server.
+Simple Bun + Hono application that writes a users information to a mongodb collection for data collection. We are collecting the users `name`, `email address` and `optIn` information which is currently set to false on default. This application can be scaled up for marketing information or an email collection service.
 
 ## Available Scripts
 
@@ -18,7 +15,6 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 Runs the linting on the files based on the `biome.json` config.
 
-
 ### `bun format`
 
 Formats the files based on the `biome.json` config.
@@ -30,6 +26,6 @@ Formats the files based on the `biome.json` config.
 | Request Type | Path             | Description                     |
 | GET          | /healthcheck  | Check if the app is running          |
 | GET          | /users       | Lists all the users saved to the mongodb database       |
-| GET          | /user/{id}      | Get a single user based on their ID          |
+| POST          | /search      | Gets a single user based on their email address          |
 | POST         | /user      | Save's the user and optin information to the db            |
-| DELETE          | /user/{id} | Deletes a user based on their ID        |
+| DELETE          | /user/ | Deletes a user based on their email        |

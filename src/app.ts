@@ -2,10 +2,10 @@ import { connect } from 'mongoose';
 
 import { healthcheck } from './controllers/heathcheck';
 import {
-  deleteUserById,
+  deleteUser,
   getAllUsers,
-  getUserById,
   saveUser,
+  searchForUser,
 } from './controllers/user';
 
 import createApp from './lib/create-app';
@@ -17,7 +17,7 @@ const app = createApp();
 app.get('/healthcheck', healthcheck);
 app.get('/users', getAllUsers);
 app.post('/user', saveUser);
-app.get('/user/:id', getUserById);
-app.delete('/user/:id', deleteUserById);
+app.post('/search', searchForUser);
+app.delete('/user', deleteUser);
 
 export default app;

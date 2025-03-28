@@ -75,11 +75,11 @@ export async function getAllUsers(c: Context) {
   );
 }
 
-export async function getUserById(c: Context) {
+export async function searchForUser(c: Context) {
   try {
-    const { id } = await c.req.param();
+    const { email } = await c.req.json();
 
-    const user = await userModel.findById({ _id: id });
+    const user = await userModel.findOne({ email: email });
 
     if (!user) {
       return c.json(
@@ -106,11 +106,11 @@ export async function getUserById(c: Context) {
   }
 }
 
-export async function deleteUserById(c: Context) {
+export async function deleteUser(c: Context) {
   try {
-    const { id } = await c.req.param();
+    const { email } = await c.req.json();
 
-    const user = await userModel.findByIdAndDelete({ _id: id });
+    const user = await userModel.findOneAndDelete({ email: email });
 
     if (!user) {
       return c.json(
@@ -124,7 +124,6 @@ export async function deleteUserById(c: Context) {
     return c.json(
       {
         message: 'User deleted successfully.',
-        data: user,
       },
       HttpStatusCodes.OK,
     );
