@@ -28,4 +28,4 @@ Formats the files based on the `biome.json` config.
 | GET          | /users       | Lists all the users saved to the mongodb database       |
 | POST          | /search      | Gets a single user based on their email address          |
 | POST         | /user      | Save's the user and optin information to the db            |
-| DELETE          | /user/ | Deletes a user based on their email        |
+| DELETE          | /user | Deletes a user based on their email        |
