@@ -5,6 +5,8 @@
   "private": true,
   "scripts": {
     "dev": "bun run --hot index.ts",
+    "build": "bun build ./index.ts --compile --outfile server",
+    "start": "bun run ./index.ts",
     "lint": "biome lint .",
     "format": "biome format --write ."
   },
